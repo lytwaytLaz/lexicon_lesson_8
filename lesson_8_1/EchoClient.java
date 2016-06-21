@@ -18,6 +18,10 @@ public class EchoClient {
         try (Socket socket = new Socket(args[0], Integer.parseInt(args[1]))) {
             OutputStream os = socket.getOutputStream();
             String message = args[2];
+
+//            // add line break so that the echo server recognizies end of in-stream
+//            if (!message.substring(message.length() - 1, message.length()).equals("\n"))
+//                message = message + "\n";
 //            byte[] bytes = message.getBytes();
 //            os.write(bytes);
 //            os.flush();
