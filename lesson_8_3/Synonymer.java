@@ -15,7 +15,7 @@ public class Synonymer {
 
     public Synonymer () throws IOException {
         thesaurusEN = new HashMap<>();
-        for (String line : Files.readAllLines(Paths.get("thesaurus-sv_utf8.txt")))
+        for (String line : Files.readAllLines(Paths.get("thesaurus-en_utf8.txt")))
             thesaurusEN.put(line.substring(0, line.indexOf(":")), line.substring(line.indexOf(":") + 1));
     }
 
