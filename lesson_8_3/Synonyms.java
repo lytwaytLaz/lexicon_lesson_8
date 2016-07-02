@@ -10,16 +10,23 @@ import java.util.HashMap;
  * @version 1.0
  * @since 2016-06-21
  */
-public class Synonymer {
+public class Synonyms
+{
     public HashMap<String, String> thesaurusEN;
 
-    public Synonymer () throws IOException {
+    public Synonyms() throws IOException {
         thesaurusEN = new HashMap<>();
-        for (String line : Files.readAllLines(Paths.get("thesaurus-sv_utf8.txt")))
+        for (String line : Files.readAllLines(Paths.get("thesaurus-en_utf8.txt")))
             thesaurusEN.put(line.substring(0, line.indexOf(":")), line.substring(line.indexOf(":") + 1));
     }
 
-    public String getSynonymer(String key) {
+    public String getSynonyms(String key) {
         return thesaurusEN.get(key);
+    }
+
+    public static void main(String[] args) throws IOException
+    {
+        Synonyms syno = new Synonyms();
+        System.out.println(syno.getSynonyms("penis"));
     }
 }

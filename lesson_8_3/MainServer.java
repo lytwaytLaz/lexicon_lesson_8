@@ -12,7 +12,7 @@ import java.net.DatagramSocket;
 class MainServer {
     final static int PORT = 60065;
     public static void main(String[] args) throws IOException {
-        Synonymer syn = new Synonymer();
+        Synonyms syn = new Synonyms();
         System.out.println("Activating server, creating thesaurus-HashMap");
         try (DatagramSocket dgSocket = new DatagramSocket(PORT))
         {
@@ -24,7 +24,7 @@ class MainServer {
                 // important to use getLength() to eliminate null values in byte array (data)
                 String key = new String(dgPacket.getData(), 0, dgPacket.getLength());
 
-                byte[] dataOut = syn.getSynonymer(key).getBytes("UTF-8");
+                byte[] dataOut = syn.getSynonyms(key).getBytes("UTF-8");
                 dgPacket = new DatagramPacket(dataOut, dataOut.length,
                         dgPacket.getAddress(), dgPacket.getPort());
                 dgSocket.send(dgPacket);
